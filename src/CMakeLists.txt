@@ -1116,11 +1116,13 @@ endif()
 if(XERCES_USE_TRANSCODER_GNUICONV)
   list(APPEND libxerces_c_SOURCES ${gnuiconv_sources})
   list(APPEND libxerces_c_HEADERS ${gnuiconv_headers})
+  list(APPEND libxerces_c_DEPS Iconv::Iconv) # convinient for CMake to analyse dependencies
 endif()
 
 if(XERCES_USE_TRANSCODER_ICONV)
   list(APPEND libxerces_c_SOURCES ${iconv_sources})
   list(APPEND libxerces_c_HEADERS ${iconv_headers})
+  list(APPEND libxerces_c_DEPS Iconv::Iconv)
 endif()
 
 if(XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER)

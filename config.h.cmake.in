@@ -67,18 +67,6 @@
 /* Define to 1 if you have the `gmtime_r' function. */
 #cmakedefine HAVE_GMTIME_R 1
 
-/* Define to 1 if you have the `iconv' function. */
-#cmakedefine HAVE_ICONV 1
-
-/* Define to 1 if you have the `iconv_close' function. */
-#cmakedefine HAVE_ICONV_CLOSE 1
-
-/* Define to 1 if you have the <iconv.h> header file. */
-#cmakedefine HAVE_ICONV_H 1
-
-/* Define to 1 if you have the `iconv_open' function. */
-#cmakedefine HAVE_ICONV_OPEN 1
-
 /* Define to 1 if you have the <langinfo.h> header file. */
 #cmakedefine HAVE_LANGINFO_H 1
 

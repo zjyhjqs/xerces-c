@@ -41,7 +41,6 @@ endif()
 
 # GNU iconv
 
-check_include_file_cxx(iconv.h HAVE_ICONV_H)
 check_include_file_cxx(wchar.h HAVE_WCHAR_H)
 check_include_file_cxx(ctype.h HAVE_CTYPE_H)
 check_include_file_cxx(locale.h HAVE_LOCALE_H)
@@ -49,15 +48,11 @@ check_include_file_cxx(errno.h HAVE_ERRNO_H)
 check_include_file_cxx(endian.h HAVE_ENDIAN_H)
 check_include_file_cxx(machine/endian.h HAVE_MACHINE_ENDIAN_H)
 check_include_file_cxx(arpa/nameser_compat.h HAVE_ARPA_NAMESER_COMPAT_H)
-check_function_exists(iconv_open HAVE_ICONV_OPEN)
-check_function_exists(iconv_close HAVE_ICONV_CLOSE)
-check_function_exists(iconv HAVE_ICONV)
 
 set(gnuiconv_available 0)
-if(HAVE_ICONV_H AND HAVE_WCHAR_H AND
-   HAVE_CTYPE_H AND HAVE_LOCALE_H AND HAVE_ERRNO_H)
+if(HAVE_WCHAR_H AND HAVE_CTYPE_H AND HAVE_LOCALE_H AND HAVE_ERRNO_H)
   if (HAVE_ENDIAN_H OR HAVE_MACHINE_ENDIAN_H OR HAVE_ARPA_NAMESER_COMPAT_H)
-    if(HAVE_ICONV_OPEN AND HAVE_ICONV_CLOSE AND HAVE_ICONV)
+    if(Iconv_IS_BUILT_IN)
       set(gnuiconv_available 1)
       list(APPEND transcoders gnuiconv)
     endif()
@@ -79,7 +74,8 @@ check_function_exists(wcstombs HAVE_WCSTOMBS)
 check_function_exists(mbstowcs HAVE_MBSTOWCS)
 
 set(iconv_available 0)
-if(HAVE_WCHAR_H AND HAVE_MBLEN AND HAVE_WCSTOMBS AND HAVE_MBSTOWCS)
+if(HAVE_WCHAR_H AND HAVE_MBLEN AND HAVE_WCSTOMBS AND HAVE_MBSTOWCS AND
+   Iconv_FOUND)
   set(iconv_available 1)
   list(APPEND transcoders iconv)
 endif()

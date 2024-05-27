@@ -100,6 +100,8 @@ set(EXTRA_DIST
   tools
 )
 
+find_package(Iconv)
+
 include(GNUInstallDirs)
 include(XercesWarnings)
 include(XercesIncludes)
